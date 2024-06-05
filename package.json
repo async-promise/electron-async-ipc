@@ -1,6 +1,6 @@
 {
   "name": "electron-async-ipc",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "Provides asynchronous ipc invocation methods between the main process and the rendering process .",
   "main": "dist/MainIPC.js",
   "scripts": {
@@ -12,6 +12,7 @@
 	},
   "keywords": [
     "electron",
+    "electron-ipc",
     "ipc",
     "async",
     "event",
@@ -22,6 +23,7 @@
     "linux",
     "desktop"
   ],
+  "homepage": "https://gitee.com/github-sunflower/electron-async-ipc",
   "devDependencies": {
     "electron": "*",
     "typescript": "~4.5.5"

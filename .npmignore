@@ -1,5 +1,8 @@
 *
 !dist/*
+!main.js
+!renderer.js
+!preload.js
 !README.md
 !LICENSE.md
 !package.json

@@ -15,10 +15,18 @@ npm i electron-async-ipc --save
     
 ## 🌿 Usage
 
-### Main process
+
+> 📍 Need to import in the entry file .
 
 ```js
 import 'electron-async-ipc/main'
+```
+
+### Main process
+
+```js
+import MainIPC from 'electron-async-ipc/main'
+// ... other code ...
 ```
 
 ### Renderer process
@@ -28,11 +36,14 @@ If a bundler is used, you can just import the module:
 
 ```typescript
 import RendererIPC from 'electron-async-ipc/renderer'
+// ... other code ...
 ```
 
 ## 🌿 Example
 
-> #### 1. The main process can send a message to the main process and receive a callback as shown in the following example
+#### 🌱 1. MainA  ↔  MainB
+
+The main process can send a message to the main process and receive a callback as shown in the following example :
 
 ```js
 // MainA:
@@ -44,7 +55,10 @@ MainIPC.handleMain(`${channel}`, async (...args) => {
 })
 ```
 
-> #### 2. The main process can send a message to the rendering process and receive a callback as shown in the following example
+
+#### 🌱 2. Main  ↔  Renderer
+
+The main process can send a message to the rendering process and receive a callback as shown in the following example :
 
 ```js
 // MainA:
@@ -57,7 +71,10 @@ RendererIPC.handleMain(`${channel}`, async (...args) => {
 })
 ```
 
-> #### 3. The rendering process can send a message to the rendering process and receive a callback as shown in the following example
+
+#### 🌱 3. RendererA  ↔  RendererB
+
+The rendering process can send a message to the rendering process and receive a callback as shown in the following example :
 
 ```js
 // RendererA:
@@ -69,7 +86,10 @@ RendererIPC.handleRenderer(`${channel}`, async (...args) => {
 })
 ```
 
-> #### 4. The rendering process can send a message to the main process and receive a callback as shown in the following example
+
+#### 🌱 4. Renderer  ↔  Main
+
+The rendering process can send a message to the main process and receive a callback as shown in the following example :
 
 ```js
 // RendererA:
