@@ -1,0 +1,31 @@
+{
+  "name": "electron-async-ipc",
+  "version": "1.0.0",
+  "description": "Provides asynchronous ipc invocation methods between the main process and the rendering process .",
+  "main": "dist/MainIPC.js",
+  "scripts": {
+    "build": "npm run clean && tsc",
+		"clean": "rm -rf dist"
+  },
+  "engines": {
+		"node": ">=4.0.0"
+	},
+  "keywords": [
+    "electron",
+    "ipc",
+    "async",
+    "event",
+    "eventEmitter",
+    "promise",
+    "mac",
+    "osx",
+    "linux",
+    "desktop"
+  ],
+  "devDependencies": {
+    "electron": "*",
+    "typescript": "~4.5.5"
+  },
+  "author": "Sunfloweee",
+  "license": "ISC"
+}
