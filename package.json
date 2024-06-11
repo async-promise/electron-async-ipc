@@ -23,11 +23,12 @@
     "linux",
     "desktop"
   ],
+  "bugs": "https://github.com/async-promise/electron-async-ipc/issues",
   "homepage": "https://github.com/async-promise/electron-async-ipc.git",
   "devDependencies": {
     "electron": "*",
     "typescript": "~4.5.5"
   },
-  "author": "Sunfloweee",
-  "license": "ISC"
+  "author": "async-promise",
+  "license": "MIT"
 }
