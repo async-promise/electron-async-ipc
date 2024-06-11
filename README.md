@@ -15,8 +15,9 @@ npm i electron-async-ipc --save
     
 ## 🌿 Usage
 
+📍 It must be imported in the main process's entry file .
 
-> 📍 Need to import in the entry file .
+（ Otherwise, rendering processes cannot communicate with each other . ）
 
 ```js
 import 'electron-async-ipc/main'
@@ -41,7 +42,7 @@ import RendererIPC from 'electron-async-ipc/renderer'
 
 ## 🌿 Example
 
-#### 🌱 1. MainA  ↔  MainB
+#### 🌵  1. MainA  ↔  MainB
 
 The main process can send a message to the main process and receive a callback as shown in the following example :
 
@@ -51,28 +52,28 @@ const res = await MainIPC.invokeMain(`${channel}`, ...args)
 
 // MainB:
 MainIPC.handleMain(`${channel}`, async (...args) => {
-	return res
+  return res
 })
 ```
 
 
-#### 🌱 2. Main  ↔  Renderer
+#### 🌵  2. Main  ↔  Renderer
 
 The main process can send a message to the rendering process and receive a callback as shown in the following example :
 
 ```js
-// MainA:
+// MainA: (two choices)
 const res = await MainIPC.invokeRenderer(`${webContents}`, `${channel}`, ...args)
 const res = await MainIPC.invokeAllRenderer(`${channel}`, ...args)
 
 // RendererB:
 RendererIPC.handleMain(`${channel}`, async (...args) => {
-	return res
+  return res
 })
 ```
 
 
-#### 🌱 3. RendererA  ↔  RendererB
+#### 🌱  3. RendererA  ↔  RendererB
 
 The rendering process can send a message to the rendering process and receive a callback as shown in the following example :
 
@@ -82,12 +83,12 @@ const res = await RendererIPC.invokeRenderer(`${channel}`, ...args)
 
 // RendererB:
 RendererIPC.handleRenderer(`${channel}`, async (...args) => {
-	return res
+  return res
 })
 ```
 
 
-#### 🌱 4. Renderer  ↔  Main
+#### 🌱  4. Renderer  ↔  Main
 
 The rendering process can send a message to the main process and receive a callback as shown in the following example :
 
@@ -97,6 +98,6 @@ const res = await RendererIPC.invokeMain(`${channel}`, ...args)
 
 // MainB:
 MainIPC.handleRenderer(`${channel}`, async (...args) => {
-	return res
+  return res
 })
 ```

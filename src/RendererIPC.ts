@@ -44,4 +44,4 @@ class RendererIPC {
 	}
 }
 
-module.exports =  RendererIPC
+export = RendererIPC

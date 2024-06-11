@@ -106,4 +106,4 @@ class MainIPC {
 const mainIPC = new MainIPC()
 mainIPC.relayMessage()
 
-module.exports =  mainIPC
+export = mainIPC
