@@ -23,6 +23,13 @@ class MainIPC {
 		})
 	}
 
+	handleMainOnce(channel: string, handler: (...args: any[]) => Promise<any>) {
+		this.eventEmitter.once(channel, async (...args) => {
+			const result = await handler(...args)
+			this.eventEmitter.emit(`${channel}-reply`, result)
+		})
+	}
+
 	handleMain(channel: string, handler: (...args: any[]) => Promise<any>) {
 		this.eventEmitter.on(channel, async (...args) => {
 			const result = await handler(...args)
@@ -72,10 +79,16 @@ class MainIPC {
 		})
 	}
 
-	handleRenderer(channel: string, handler: (...args: any[]) => Promise<any>) {
-		ipcMain.on(channel, async (event, ...args: any[]) => {
+	handleRendererOnce(channel: string, handler: (...args: any[]) => Promise<any>) {
+		ipcMain.once(channel, async (event, ...args: any[]) => {
 			const result = await handler(...args)
 			event.sender.send(`${channel}-reply`, result)
+		})
+	}
+
+	handleRenderer(channel: string, handler: (...args: any[]) => Promise<any>) {
+		ipcMain.handle(channel, async (event, ...args: any[]) => {
+			return await handler(...args)
 		})
 	}
 

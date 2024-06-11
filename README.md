@@ -50,10 +50,9 @@ The main process can send a message to the main process and receive a callback a
 // MainA:
 const res = await MainIPC.invokeMain(`${channel}`, ...args)
 
-// MainB:
-MainIPC.handleMain(`${channel}`, async (...args) => {
-  return res
-})
+// MainB: (two choices) 
+MainIPC.handleMain(`${channel}`, async (...args) => { return res })
+MainIPC.handleMainOnce(`${channel}`, async (...args) => { return res })
 ```
 
 
@@ -62,14 +61,13 @@ MainIPC.handleMain(`${channel}`, async (...args) => {
 The main process can send a message to the rendering process and receive a callback as shown in the following example :
 
 ```js
-// MainA: (two choices)
+/* MainA: (two choices) */
 const res = await MainIPC.invokeRenderer(`${webContents}`, `${channel}`, ...args)
 const res = await MainIPC.invokeAllRenderer(`${channel}`, ...args)
 
-// RendererB:
-RendererIPC.handleMain(`${channel}`, async (...args) => {
-  return res
-})
+/* RendererB: (two choices) */
+RendererIPC.handleMain(`${channel}`, async (...args) => { return res })
+RendererIPC.handleMainOnce(`${channel}`, async (...args) => { return res })
 ```
 
 
@@ -81,10 +79,9 @@ The rendering process can send a message to the rendering process and receive a 
 // RendererA:
 const res = await RendererIPC.invokeRenderer(`${channel}`, ...args)
 
-// RendererB:
-RendererIPC.handleRenderer(`${channel}`, async (...args) => {
-  return res
-})
+// RendererB: (two choices)
+RendererIPC.handleRenderer(`${channel}`, async (...args) => { return res })
+RendererIPC.handleRendererOnce(`${channel}`, async (...args) => { return res })
 ```
 
 
@@ -97,7 +94,15 @@ The rendering process can send a message to the main process and receive a callb
 const res = await RendererIPC.invokeMain(`${channel}`, ...args)
 
 // MainB:
-MainIPC.handleRenderer(`${channel}`, async (...args) => {
-  return res
-})
+MainIPC.handleRenderer(`${channel}`, async (...args) => { return res })
+```
+
+```js
+/** --- 以下为 once 案例 ( * handleRendererOnce must be used with invokeMainOnce ) --- */
+
+// RendererA:
+const res = await RendererIPC.invokeMainOnce(`${channel}`, ...args)
+
+// MainB:
+MainIPC.handleRendererOnce(`${channel}`, async (...args) => { return res })
 ```
