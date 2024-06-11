@@ -98,7 +98,7 @@ MainIPC.handleRenderer(`${channel}`, async (...args) => { return res })
 ```
 
 ```js
-/** --- 以下为 once 案例 ( * handleRendererOnce must be used with invokeMainOnce ) --- */
+/** --- The following is the once case ( * handleRendererOnce must be used with invokeMainOnce ) --- */
 
 // RendererA:
 const res = await RendererIPC.invokeMainOnce(`${channel}`, ...args)
