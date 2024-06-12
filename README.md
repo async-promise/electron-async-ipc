@@ -1,12 +1,12 @@
 # electron-async-ipc
 
-[![NPM version](https://badge.fury.io/js/electron-log.svg)](https://badge.fury.io/js/electron-log)
+[![npm version](https://badge.fury.io/js/electron-async-ipc.svg)](https://badge.fury.io/js/electron-async-ipc)
 
 ✨ Asynchronous electron ipc invocation mechanism .
 
 ## 🌿 Installation
 
-Install with [npm](https://npmjs.org/package/electron-log):
+Install with [npm](https://www.npmjs.com/package/electron-async-ipc):
 
 ```shell
 npm i electron-async-ipc --save
@@ -97,9 +97,9 @@ const res = await RendererIPC.invokeMain(`${channel}`, ...args)
 MainIPC.handleRenderer(`${channel}`, async (...args) => { return res })
 ```
 
-```js
-/** --- The following is the once case ( * handleRendererOnce must be used with invokeMainOnce ) --- */
+The example is the once case ( * handleRendererOnce must be used with invokeMainOnce ) :
 
+```js
 // RendererA:
 const res = await RendererIPC.invokeMainOnce(`${channel}`, ...args)
 

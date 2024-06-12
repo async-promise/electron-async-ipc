@@ -1,6 +1,6 @@
 {
   "name": "electron-async-ipc",
-  "version": "1.1.2",
+  "version": "1.1.4",
   "description": "Provides asynchronous ipc invocation methods between the main process and the rendering process .",
   "main": "dist/MainIPC.js",
   "scripts": {
